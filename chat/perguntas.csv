@@ -1,0 +1,110 @@
+categoria,frase
+FATURA,Quero parcelar minha fatura
+FATURA,Quero ver minha fatura
+FATURA,Quero alterar a data da minha fatura
+FATURA,Minha fatura ainda não fechou
+FATURA,Quando minha fatura vence
+FATURA,Qual o valor da minha fatura
+FATURA,Quero antecipar o pagamento da fatura
+FATURA,Quero receber minha fatura por e-mail
+FATURA,Minha fatura está errada
+FATURA,Quero contestar um valor da fatura
+
+CARTAO,Qual o limite do meu cartão
+CARTAO,Quero solicitar um novo cartão
+CARTAO,Quero um cartão virtual
+CARTAO,Como ativar a aproximação do meu cartão
+CARTAO,Quero habilitar o crédito do meu cartão
+CARTAO,Qual o código de segurança do meu cartão
+CARTAO,Meu cartão não está funcionando
+CARTAO,Quero desbloquear meu cartão
+CARTAO,Meu cartão foi recusado
+CARTAO,Como rastrear meu cartão
+
+LIMITE,Quero saber quanto de limite tenho disponível
+LIMITE,Quero aumentar o meu limite
+LIMITE,Meu limite diminuiu
+LIMITE,Como funciona o limite do cartão
+LIMITE,Quando meu limite é liberado
+LIMITE,Quero diminuir meu limite
+LIMITE,Meu limite não atualizou
+LIMITE,Qual o limite emergencial
+LIMITE,Posso usar mais que o limite
+LIMITE,Como consultar meu limite total
+
+BLOQUEIO,Quero bloquear o meu cartão
+BLOQUEIO,Quero desbloquear o meu cartão
+BLOQUEIO,Meu cartão foi bloqueado automaticamente
+BLOQUEIO,Como bloquear temporariamente o cartão
+BLOQUEIO,Bloqueei meu cartão por engano
+BLOQUEIO,Quero bloquear compras internacionais
+BLOQUEIO,Quero bloquear compras online
+BLOQUEIO,Como saber se meu cartão está bloqueado
+BLOQUEIO,Posso usar o cartão bloqueado
+BLOQUEIO,Como desbloquear compras por aproximação
+
+PARCELAMENTO,Quantas vezes posso parcelar minha fatura
+PARCELAMENTO,Posso adiantar duas parcelas
+PARCELAMENTO,Quero parcelar uma compra
+PARCELAMENTO,Posso cancelar um parcelamento
+PARCELAMENTO,Qual o valor mínimo para parcelar
+PARCELAMENTO,Parcelamento tem juros
+PARCELAMENTO,Como ver minhas parcelas
+PARCELAMENTO,Posso mudar a quantidade de parcelas
+PARCELAMENTO,Quero antecipar parcelas
+PARCELAMENTO,Parcelamento compromete meu limite
+
+SENHA,Quero alterar a senha do meu cartão
+SENHA,Esqueci a senha do meu cartão
+SENHA,Minha senha foi bloqueada
+SENHA,Como cadastrar uma nova senha
+SENHA,Quantas tentativas de senha posso fazer
+SENHA,Minha senha não funciona
+SENHA,Posso usar biometria no lugar da senha
+SENHA,Como recuperar minha senha
+SENHA,Quero redefinir minha senha
+SENHA,A senha do app é a mesma do cartão
+
+FURTO,O que fazer caso meu cartão seja roubado
+FURTO,Meu cartão foi perdido
+FURTO,Fui roubado e usaram meu cartão
+FURTO,Como bloquear cartão roubado
+FURTO,Posso recuperar valores após roubo
+FURTO,Quero pedir segunda via do cartão
+FURTO,Meu cartão foi clonado
+FURTO,Como contestar compras indevidas
+FURTO,Preciso registrar boletim de ocorrência
+FURTO,Quanto tempo leva para receber novo cartão
+
+BOLETO,Posso pagar o boleto com pix
+BOLETO,Como gerar boleto
+BOLETO,Meu boleto venceu
+BOLETO,Quero segunda via do boleto
+BOLETO,Quanto tempo demora para compensar boleto
+BOLETO,Posso parcelar boleto
+BOLETO,Onde encontrar meu boleto
+BOLETO,Meu boleto não foi compensado
+BOLETO,Posso pagar boleto com cartão
+BOLETO,Qual o valor mínimo do boleto
+
+APP_CONTA,Nao consigo acessar o aplicativo
+APP_CONTA,Meu app esta travando
+APP_CONTA,Como atualizar meus dados cadastrais
+APP_CONTA,Quero alterar meu telefone
+APP_CONTA,Quero alterar meu e-mail
+APP_CONTA,Como excluir minha conta
+APP_CONTA,Como ativar notificacoes
+APP_CONTA,Meu saldo nao aparece
+APP_CONTA,Como consultar meu extrato
+APP_CONTA,Quero encerrar minha conta
+
+PIX,Como fazer um pix
+PIX,Meu pix nao caiu
+PIX,Posso agendar um pix
+PIX,Qual o limite do pix
+PIX,Quero cancelar um pix
+PIX,Como cadastrar chave pix
+PIX,Posso usar cartao no pix
+PIX,Meu pix foi devolvido
+PIX,Quanto tempo demora o pix
+PIX,Como ver historico de pix
