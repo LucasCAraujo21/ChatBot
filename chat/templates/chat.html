@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Chat IA</title>
+        
+        <style>
+            body{
+                padding-left: 50vh;
+                padding-right: 50vh;
+                padding-top: 20vh;
+                background: #2e2e2e;
+            }
+            .chat-container {
+                width: 350px; 
+                height: 500px;
+                border: 1px solid #ccc; 
+                font-family: sans-serif; 
+
+                display: flex;
+                flex-direction: column;
+            }
+            .chat-header { 
+                background-color: #075E54;
+                color: white; 
+                padding: 10px; 
+                display: flex; 
+                align-items: center; 
+            }
+            .chat-header img { 
+                width: 40px; 
+                border-radius: 50%; 
+                margin-right: 10px; 
+            }
+            .chat-body { 
+                background-color: #e5ddd5; 
+                height: 400px; 
+                padding: 15px; 
+                flex: 1;
+                overflow-y: auto; 
+            }
+            .msg { 
+                padding: 8px; 
+                border-radius: 8px; 
+                margin-bottom: 10px; 
+                max-width: 70%; 
+            }
+            .bot { 
+                background-color: white; 
+                align-self: flex-start; 
+            }
+            .user { 
+                background-color: #dcf8c6; 
+                margin-left: auto; 
+            }
+            .input-area { 
+                display: flex; 
+                padding: 10px; 
+                background-color: #f0f0f0; 
+            }
+            .input-area input { 
+                flex: 1; 
+                padding: 8px; 
+                border: none; 
+                border-radius: 20px; 
+            }
+
+        </style>
+    </head>
+
+    <body>
+<!--        <div class="chat-container">
+            <div class="chat-header">
+                <img src="avatar.png" alt="Avatar">
+                <span>Nome do Usuário</span>
+            </div>
+            <div class="chat-body">
+                <div class="message received">Olá! Como posso ajudar?</div>
+                <div class="message sent">Quero saber mais sobre o projeto.</div>
+            </div>
+            <div class="chat-input">
+                <input type="text" placeholder="Digite uma mensagem...">
+                <button>Enviar</button>
+            </div>
+        </div> -->
+
+        <div class="chat-conteiner">
+            <div class="chat-header">
+                <img src="avatar.png" alt="Avatar">
+                <span>Nome do Usuário</span>
+            </div>
+
+            <div class="chat-body">
+                <div id="messages" class="messages"></div>
+            </div>
+
+            <div class="input-area">
+                <input type="text" id="pergunta" placeholder="Digite sua pergunta">
+                <button onclick="enviar()">Enviar</button>
+            </div>
+        </div>
+
+
+        <script>
+            function adicionarMensagem(texto, classe) {
+                const div = document.createElement("div");
+                div.classList.add("msg", classe);
+                div.innerText = texto;
+
+                document.getElementById("messages").appendChild(div);
+
+                // scroll automático
+                const chatBody = document.querySelector(".chat-body");
+                chatBody.scrollTop = chatBody.scrollHeight;
+            }
+
+            async function enviar() {
+                const input = document.getElementById("pergunta");
+                const pergunta = input.value;
+
+                if (!pergunta) return;
+
+                adicionarMensagem(pergunta, "user");
+                input.value = "";
+
+                const res = await fetch("/chat", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ pergunta })
+                });
+
+                const data = await res.json();
+
+                adicionarMensagem(data.resposta, "bot");
+            }
+
+            // ✅ ENTER para enviar mensagem
+            document.getElementById("pergunta").addEventListener("keypress", function(e) {
+                if (e.key === "Enter") {
+                    enviar();
+                }
+            });
+        </script>
+    </body>
+</html>

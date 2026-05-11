@@ -21,8 +21,8 @@ def listar():
     return selectAll()
 
 
-def buscar(cpf):
-    return buscar_cliente_por_cpf(cpf)
+def buscar(conexao, cpf):
+    return buscar_cliente_por_cpf(conexao, cpf)
 
 
 def atualizar(cpf, dados):

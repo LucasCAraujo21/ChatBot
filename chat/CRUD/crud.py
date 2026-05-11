@@ -3,17 +3,6 @@ from CRUD.conexao import conectar
 conexao = conectar() #faz a conexão
 cursor = conexao.cursor() #permite usar comandos sql
 
-def selectAll():
-    cursor.execute('SELECT * FROM cliente')
-    return cursor.fetchall() #traz os dados do banco
-
-"""    for nomes in dados:
-        return print(nomes)"""
-
-def buscar_cliente_por_cpf(cpf):
-    cursor.execute("SELECT * FROM cliente WHERE cpf = ?", (cpf,))
-    return cursor.fetchone()
-
 def inserir_cliente(cliente):
     cursor.execute('''
         INSERT INTO cliente 
@@ -21,6 +10,19 @@ def inserir_cliente(cliente):
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
     ''', tuple(cliente.values()))
     conexao.commit()
+
+
+def selectAll():
+    cursor.execute('SELECT * FROM cliente')
+    return cursor.fetchall() #traz os dados do banco
+
+"""    for nomes in dados:
+        return print(nomes)"""
+
+def buscar_cliente_por_cpf(conexao, cpf):
+    cursor = conexao.cursor()
+    cursor.execute("SELECT nome, limite, valor_fatura FROM cliente WHERE cpf = ?", (cpf,))
+    return cursor.fetchone()
 
 
 def atualizar_cliente(cpf, novos_dados):
