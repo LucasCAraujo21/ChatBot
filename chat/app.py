@@ -3,6 +3,7 @@ from sklearn.naive_bayes import MultinomialNB
 import pandas as pd
 import json
 import sqlite3
+from flask import session
 from CRUD.crud import buscar_cliente_por_cpf
 #Contvectorizer é uma classe da biblioteca sklearn que tranforma textos do vocabulario em vetores numéricos
 #MultinomialNB classifica os textos com base na frequencia das palavras. Aprende com a contagem das palavras vetorizadas e as probabilidades aprendidas
@@ -29,28 +30,23 @@ modelo.fit(X,categorias)
 with open("respostas.json", "r", encoding="utf-8") as arquivo:
     respostas = json.load(arquivo)
     
-estado_usuario = {
-    "aguardando_cpf": False
-}
 
 def responder(pergunta):
-    global estado_usuario   
+    #trocar de CPF
+    if pergunta in ["trocar cpf", "mudar cpf", "alterar cpf"]:
+        session.pop("cpf", None)
+        return "CPF removido. Informe o novo."
     
-# 🔹 Se estiver esperando CPF
-    if estado_usuario["aguardando_cpf"]:
-        cpf = pergunta.strip()
-
-        conexao = sqlite3.connect("cartao.db")
-        cliente = buscar_cliente_por_cpf(conexao, cpf)
-        conexao.close()
-
-        estado_usuario["aguardando_cpf"] = False
-
-        if cliente:
-            nome, limite, fatura = cliente
-            return f"{nome}, seu limite é R$ {limite}"
+    #se cpf não estiver salvo
+    if "cpf" not in session:
+        if pergunta.isdigit() and len(pergunta) == 11:
+            session["cpf"] = pergunta
+            return "CPF registrado com sucesso. Digite 'trocar cpf' para apagar o CPF"
         else:
-            return "CPF não encontrado."
+            return "Por favor, informe seu CPF"
+        
+    #se cpf já estiver salvo
+    cpf = session["cpf"]
 
     pergunta_vetorizada = vetorizador.transform([pergunta])
     #pergunta_vetorizada - transforma a pergunta digitada em uma forma numerica que o modelo consiga entender
@@ -65,14 +61,20 @@ def responder(pergunta):
     maior_probabilidade = max(probabilidades)
     #guarda a maior probabilidade de resposta escolhida pelo modelo
     
+    
+    if categoria_prevista.lower() == "limite":
+        conexao = sqlite3.connect("cartao.db")
+        cliente = buscar_cliente_por_cpf(conexao, cpf)
+        conexao.close()
 
+        if cliente:
+            nome, limite, fatura = cliente
+            return f"{nome}, seu limite é R$ {limite}"
+        else:
+            return "Cliente não encontrado."
+    
     if maior_probabilidade < 0.40: #menor que 40%
         return "Não entendi a pergunta."
-        
-    # 🔥 se precisar de CPF
-    if categoria_prevista.lower() == "limite":
-        estado_usuario["aguardando_cpf"] = True
-        return "Por favor, informe seu CPF."
 
     #RESPOSTA GENÉRICA
     return respostas.get(categoria_prevista.lower(), "Resposta não encontrada.")

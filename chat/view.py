@@ -1,5 +1,5 @@
 from flask import Blueprint
-from flask import render_template, request, jsonify
+from flask import render_template, request, jsonify, session
 from app import responder
 
 from CRUD.service import *
